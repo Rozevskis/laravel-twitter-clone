@@ -1,3 +1,19 @@
+<style>
+body {
+     &::-webkit-scrollbar {
+      width: 10px;
+     }
+    
+     &::-webkit-scrollbar-track {
+      background-color: #FFFFFF;
+     }
+    
+     &::-webkit-scrollbar-thumb {
+      border-radius: 50px;
+      background-color: red;
+     }
+    }
+    </style>
 <?php
 
 use Illuminate\Http\Request;

@@ -42,6 +42,16 @@ const textareaInput = (e) => {
     textarea.value.style.height = `${e.target.scrollHeight}px`;
 }
 
+const addTweet = () => {
+   if (!tweet.value) return
+   let data = new FormData()
+
+   data.append('tweet', tweet.value)
+   data.append('file', file.value)
+
+   router.post('/tweets', data)
+   closeMessageBox();
+}
 </script>
 
 <template>
@@ -127,13 +137,12 @@ const textareaInput = (e) => {
                     </div>
 
                 </div>
-
-            </div>
-            <div class="absolute top-0 z-0 h-full overflow-auto scrollbar-hide">
+                <div class="absolute top-0 z-0 h-full overflow-auto scrollbar-hide">
                 <div class="mt-[126px]">
                     <slot />
                     <div class="pb-4"></div>
                 </div>
+            </div>
             </div>
             <div class="lg:block hidden lg:w-4/12 h-screen border-l border-gray-800 pl-4">
                 <div class="w-full p-1 mt-2 px-4 lg:flex items-center rounded-full hidden bg-[#212327]">
@@ -229,9 +238,11 @@ const textareaInput = (e) => {
                     <ArrowLeft fillColor="#FFFFFF" :size="28" class="md:hidden block" />
                 </div>
                 <button 
-                :disabled="!tweet"
-                :class="tweet? 'bg-[#1C9CEF] text-white': 'bg-[#124D77] text-gray-400'"
-                class="md:hidden font-extrabold text-(l6px) p-1.5 px-4 rounded-full cursor-pointer">
+                    @click="addTweet()"
+                    :disabled="!tweet"
+                    :class="tweet? 'bg-[#1C9CEF] text-white': 'bg-[#124D77] text-gray-400'"
+                    class="md:hidden font-extrabold text-(l6px) p-1.5 px-4 rounded-full cursor-pointer"
+                >
                     Tweet
                 </button>
             </div>
@@ -292,6 +303,7 @@ const textareaInput = (e) => {
                             </div>
                         </div>
                         <button 
+                        @click="addTweet()"
                         :disabled="!tweet"
                         :class="tweet? 'bg-[#1C9CEF] text-white': 'bg-[#124D77] text-gray-400'"
                         class="hidden md:block font-extrabold text-(l6px) p-1.5 px-4 rounded-full cursor-pointer">

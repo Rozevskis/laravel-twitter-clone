@@ -20,3 +20,7 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+/public/videos/*
+!/public/videos/
+/public/images/*
+!/public/images/
