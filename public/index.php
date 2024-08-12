@@ -1,18 +1,21 @@
 <style>
-body {
-     &::-webkit-scrollbar {
-      width: 10px;
-     }
-    
-     &::-webkit-scrollbar-track {
-      background-color: #FFFFFF;
-     }
-    
-     &::-webkit-scrollbar-thumb {
-      border-radius: 50px;
-      background-color: red;
-     }
-    }
+div {
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background-color: #212327;
+    margin-top: 125px;
+
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    border-radius: 50px;
+    background-color: #6B7280;
+
+  }
+}
     </style>
 <?php
 
