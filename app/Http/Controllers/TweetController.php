@@ -61,9 +61,6 @@ class TweetController extends Controller
         if (!is_null($tweet->file) && file_exists(public_path() . $tweet->file)) {
             unlink(public_path() . $tweet->file);
         }
-
         $tweet->delete();
-        return redirect()->route('tweets.index');
-        
     }
  }

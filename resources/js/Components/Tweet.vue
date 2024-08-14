@@ -6,7 +6,7 @@ import HeartOutline from 'vue-material-design-icons/HeartOutline.vue';
 import ChartBar from 'vue-material-design-icons/ChartBar.vue';
 import MessageOutline from 'vue-material-design-icons/MessageOutline.vue';
 import Sync from 'vue-material-design-icons/Sync.vue';
-import DotsHorizontal from 'vue-material-design-icons/DotsHorizontal.vue';;
+import DotsHorizontal from 'vue-material-design-icons/DotsHorizontal.vue';
 import TrashCanOutline from 'vue-material-design-icons/TrashCanOutline.vue';
 
 
@@ -28,8 +28,8 @@ let openOptions = ref(false);
                 <span class="font-[300] text-[15] text-gray-500 pl-2">{{ tweet.handle }}</span>
             </div>
             <div class="hover:bg-gray-800 rounded-full cursor-pointer relative">
-                <button type="button" class="block p-2">
-                    <DotsHorizontal @click="openOptions= !openOptions" />
+                <button type="button" class="block p-2" @click="openOptions = !openOptions">
+                    <DotsHorizontal />
                 </button>
                 <div
                     v-if="openOptions"
@@ -46,6 +46,7 @@ let openOptions = ref(false);
                     shadow-lg">
 
                     <Link
+                    @click="deleteTweet(tweet.id)"
                     as="button"
                     method="delete"
                     :href="route('tweets.destroy', tweet.id)"
@@ -97,3 +98,18 @@ let openOptions = ref(false);
     </div>
     
 </template>
+
+<script>
+export default {
+  props: ['tweet'],
+  methods: {
+    deleteTweet() {
+      const element = document.querySelector(`[data-tweet-id="${this.tweet.id}"]`);
+      if (element) {
+        element.remove();
+      }
+    }
+  }
+}
+</script>
+
